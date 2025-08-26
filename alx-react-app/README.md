@@ -40,17 +40,3 @@ This project is designed to introduce you to the **essential elements of React**
 - **Node.js & npm** (for environment setup)
 
 ---
-
-## 📂 Project Structure
-```bash
-fundamentals-react/
-├── public/             # Static assets
-├── src/
-│   ├── components/     # Reusable components
-│   │   ├── ProfileCard.jsx
-│   │   └── Header.jsx
-│   ├── App.jsx         # Main application component
-│   ├── index.js        # Entry point with ReactDOM
-│   └── styles.css      # Optional styling
-├── package.json
-└── README.md
