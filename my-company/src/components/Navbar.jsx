@@ -9,8 +9,8 @@ function Navbar() {
   };
 
   return (
-    <nav>
-      <div className="nav-container">
+    <nav style={{ backgroundColor: '#2563eb' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div className="nav-logo">
           <Link to="/">Company</Link>
         </div>
