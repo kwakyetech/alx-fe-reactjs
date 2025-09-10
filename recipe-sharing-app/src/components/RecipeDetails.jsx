@@ -10,7 +10,20 @@ const RecipeDetails = () => {
   const recipe = useRecipeStore(state => 
     state.recipes.find(recipe => recipe.id === parseInt(id))
   );
+  const favorites = useRecipeStore(state => state.favorites);
+  const addFavorite = useRecipeStore(state => state.addFavorite);
+  const removeFavorite = useRecipeStore(state => state.removeFavorite);
   const [isEditing, setIsEditing] = React.useState(false);
+
+  const handleToggleFavorite = () => {
+    if (favorites.includes(recipe.id)) {
+      removeFavorite(recipe.id);
+    } else {
+      addFavorite(recipe.id);
+    }
+  };
+
+  const isRecipeFavorited = favorites.includes(recipe.id);
 
   if (!recipe) {
     return (
@@ -58,6 +71,22 @@ const RecipeDetails = () => {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
             <h1 style={{ margin: '0', color: '#333' }}>{recipe.title}</h1>
             <div style={{ display: 'flex', gap: '10px' }}>
+              <button
+                onClick={handleToggleFavorite}
+                style={{
+                  background: 'transparent',
+                  border: `2px solid ${isRecipeFavorited ? '#ff6b6b' : '#ddd'}`,
+                  padding: '8px 12px',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  fontSize: '18px',
+                  transition: 'all 0.2s ease',
+                  backgroundColor: isRecipeFavorited ? '#ff6b6b' : 'transparent'
+                }}
+                title={isRecipeFavorited ? 'Remove from favorites' : 'Add to favorites'}
+              >
+                {isRecipeFavorited ? '❤️' : '🤍'}
+              </button>
               <button 
                 onClick={() => setIsEditing(true)}
                 style={{
