@@ -3,14 +3,21 @@ import useRecipeStore from './recipeStore';
 
 const RecipeList = () => {
   const recipes = useRecipeStore(state => state.recipes);
+  const filteredRecipes = useRecipeStore(state => state.filteredRecipes);
+  const searchTerm = useRecipeStore(state => state.searchTerm);
+
+  // Use filteredRecipes if there's a search term, otherwise use all recipes
+  const displayRecipes = searchTerm ? filteredRecipes : recipes;
 
   return (
     <div>
       <h2>Recipe List</h2>
       {recipes.length === 0 ? (
         <p>No recipes available. Add some recipes to get started!</p>
+      ) : displayRecipes.length === 0 ? (
+        <p>No recipes found matching "{searchTerm}". Try a different search term!</p>
       ) : (
-        recipes.map(recipe => (
+        displayRecipes.map(recipe => (
           <div key={recipe.id} style={{ 
             border: '1px solid #ccc', 
             margin: '10px', 
