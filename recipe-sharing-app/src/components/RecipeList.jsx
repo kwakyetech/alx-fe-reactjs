@@ -1,4 +1,5 @@
-import { useRecipeStore } from '../recipeStore'
+import { Link } from 'react-router-dom';
+import useRecipeStore from './recipeStore';
 
 const RecipeList = () => {
   const recipes = useRecipeStore(state => state.recipes);
@@ -10,9 +11,53 @@ const RecipeList = () => {
         <p>No recipes available. Add some recipes to get started!</p>
       ) : (
         recipes.map(recipe => (
-          <div key={recipe.id} style={{ border: '1px solid #ccc', margin: '10px', padding: '10px', borderRadius: '5px' }}>
-            <h3>{recipe.title}</h3>
-            <p>{recipe.description}</p>
+          <div key={recipe.id} style={{ 
+            border: '1px solid #ccc', 
+            margin: '10px', 
+            padding: '15px', 
+            borderRadius: '8px',
+            backgroundColor: '#f8f9fa',
+            transition: 'box-shadow 0.2s ease'
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <div style={{ flex: 1 }}>
+                <h3 style={{ margin: '0 0 10px 0', color: '#333' }}>{recipe.title}</h3>
+                <p style={{ 
+                  margin: '0 0 15px 0', 
+                  color: '#666',
+                  lineHeight: '1.4',
+                  maxHeight: '60px',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis'
+                }}>
+                  {recipe.description.length > 100 
+                    ? `${recipe.description.substring(0, 100)}...` 
+                    : recipe.description
+                  }
+                </p>
+              </div>
+            </div>
+            <Link 
+              to={`/recipe/${recipe.id}`}
+              style={{
+                display: 'inline-block',
+                padding: '8px 16px',
+                backgroundColor: '#007bff',
+                color: 'white',
+                textDecoration: 'none',
+                borderRadius: '4px',
+                fontSize: '14px',
+                transition: 'background-color 0.2s ease'
+              }}
+              onMouseOver={(e) => {
+                e.target.style.backgroundColor = '#0056b3';
+              }}
+              onMouseOut={(e) => {
+                e.target.style.backgroundColor = '#007bff';
+              }}
+            >
+              View Details
+            </Link>
           </div>
         ))
       )}
