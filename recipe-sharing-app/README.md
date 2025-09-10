@@ -9,6 +9,8 @@ A modern React application for sharing and managing recipes, built with Vite and
 - **Favorites System**: Mark recipes as favorites and view them in a dedicated section
 - **Smart Recommendations**: Get personalized recipe suggestions based on your favorites
 - **Advanced Search**: Search recipes by title with instant filtering
+- **Data Persistence**: All recipes, favorites, and search preferences are automatically saved to localStorage
+- **Cross-Session Continuity**: Your data persists between browser sessions - no data loss on refresh
 - **Routing & Navigation**: Multi-page application with React Router
 - **State Management**: Powered by Zustand for efficient and simple state management
 - **Modern UI**: Beautiful, responsive design with Tailwind CSS
@@ -76,19 +78,24 @@ src/
 │   ├── RecipeList.jsx       # Component for displaying recipe list
 │   ├── RecipeDetails.jsx    # Detailed view for individual recipes
 │   ├── SearchBar.jsx        # Search functionality component
-│   └── recipeStore.js       # Zustand store for recipe state management
+│   └── recipeStore.js       # Zustand store with localStorage integration
+├── utils/
+│   └── localStorage.js      # localStorage utility functions for data persistence
 ├── App.jsx                  # Main application component with routing
 ├── App.css                  # Application styles
 ├── index.css                # Global styles with Tailwind CSS
 └── main.jsx                 # Application entry point
 ```
 
-## 🔧 State Management
+## 🔧 State Management & Data Persistence
 
-This application uses **Zustand** for state management, providing:
+This application uses **Zustand** for state management with **localStorage** integration, providing:
 
 - **Simple API**: Easy to understand and implement
 - **No boilerplate**: Minimal setup required
+- **Data Persistence**: Automatic localStorage integration for all state changes
+- **Cross-Session Storage**: Recipes, favorites, and search terms persist between sessions
+- **Error Handling**: Safe localStorage operations with fallback values
 - **TypeScript ready**: Full TypeScript support (when needed)
 - **Devtools support**: Integration with Redux DevTools
 
@@ -156,6 +163,21 @@ const useRecipeStore = create((set) => ({
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint for code quality
 
+## 💾 Data Persistence
+
+The application automatically saves all your data using localStorage:
+
+- **Recipes**: All created recipes are saved and restored on app reload
+- **Favorites**: Your favorite recipes persist across browser sessions
+- **Search State**: Last search term is remembered when you return
+- **Safe Operations**: Error handling ensures data integrity
+- **No Setup Required**: Works automatically without any configuration
+
+### Storage Keys
+- `recipeApp_recipes` - All recipe data
+- `recipeApp_favorites` - Favorite recipe IDs
+- `recipeApp_searchTerm` - Current search term
+
 ## 🔮 Future Enhancements
 
 - [ ] Recipe editing functionality in the UI
@@ -170,6 +192,8 @@ const useRecipeStore = create((set) => ({
 - [ ] Grocery list generation from recipes
 - [ ] Nutritional information display
 - [ ] Recipe import from URLs
+- [ ] Data export/import functionality
+- [ ] Cloud synchronization for cross-device access
 
 ## 🤝 Contributing
 
