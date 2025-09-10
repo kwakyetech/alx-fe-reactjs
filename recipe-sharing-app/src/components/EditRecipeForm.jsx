@@ -24,8 +24,8 @@ const EditRecipeForm = ({ recipe, onCancel, onSave }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     
     if (validateForm()) {
       const updatedRecipe = {
