@@ -1,4 +1,3 @@
-import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import RecipeList from './components/RecipeList'
 import AddRecipeForm from './components/AddRecipeForm'
@@ -10,56 +9,33 @@ import RecommendationsList from './components/RecommendationsList'
 function App() {
   return (
     <Router>
-      <div className="App">
-        <header>
-          <h1>Recipe Sharing Application</h1>
-          <nav style={{ 
-            display: 'flex', 
-            justifyContent: 'center', 
-            gap: '20px', 
-            marginTop: '20px',
-            padding: '10px 0',
-            borderBottom: '1px solid #eee'
-          }}>
-            <Link 
-              to="/" 
-              style={{
-                textDecoration: 'none',
-                color: '#007bff',
-                padding: '8px 16px',
-                borderRadius: '4px',
-                transition: 'background-color 0.2s ease'
-              }}
-            >
-              🏠 Home
-            </Link>
-            <Link 
-              to="/favorites" 
-              style={{
-                textDecoration: 'none',
-                color: '#007bff',
-                padding: '8px 16px',
-                borderRadius: '4px',
-                transition: 'background-color 0.2s ease'
-              }}
-            >
-              ❤️ Favorites
-            </Link>
-            <Link 
-              to="/recommendations" 
-              style={{
-                textDecoration: 'none',
-                color: '#007bff',
-                padding: '8px 16px',
-                borderRadius: '4px',
-                transition: 'background-color 0.2s ease'
-              }}
-            >
-              ⭐ Recommendations
-            </Link>
-          </nav>
+      <div className="min-h-screen bg-gray-50">
+        <header className="bg-white shadow-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 className="text-3xl font-bold text-gray-900 text-center py-6">Recipe Sharing Application</h1>
+            <nav className="flex justify-center gap-6 pb-4 border-b border-gray-200">
+              <Link 
+                to="/" 
+                className="flex items-center gap-2 px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition-colors duration-200 font-medium"
+              >
+                🏠 Home
+              </Link>
+              <Link 
+                to="/favorites" 
+                className="flex items-center gap-2 px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition-colors duration-200 font-medium"
+              >
+                ❤️ Favorites
+              </Link>
+              <Link 
+                to="/recommendations" 
+                className="flex items-center gap-2 px-4 py-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition-colors duration-200 font-medium"
+              >
+                ⭐ Recommendations
+              </Link>
+            </nav>
+          </div>
         </header>
-        <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
+        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Routes>
             <Route path="/" element={
               <>

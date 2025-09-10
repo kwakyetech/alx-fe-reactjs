@@ -27,16 +27,12 @@ const RecipeDetails = () => {
 
   if (!recipe) {
     return (
-      <div style={{ padding: '20px', textAlign: 'center' }}>
-        <h2>Recipe not found</h2>
-        <button onClick={() => navigate('/')} style={{
-          padding: '10px 20px',
-          backgroundColor: '#007bff',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer'
-        }}>
+      <div className="p-8 text-center">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Recipe not found</h2>
+        <button 
+          onClick={() => navigate('/')} 
+          className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200"
+        >
           Back to Recipes
         </button>
       </div>
@@ -44,18 +40,10 @@ const RecipeDetails = () => {
   }
 
   return (
-    <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
+    <div className="max-w-4xl mx-auto p-6">
       <button 
         onClick={() => navigate('/')} 
-        style={{
-          marginBottom: '20px',
-          padding: '8px 16px',
-          backgroundColor: '#6c757d',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer'
-        }}
+        className="mb-6 px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors duration-200 flex items-center gap-2"
       >
         ← Back to Recipes
       </button>
@@ -67,36 +55,24 @@ const RecipeDetails = () => {
           onSave={() => setIsEditing(false)}
         />
       ) : (
-        <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
-            <h1 style={{ margin: '0', color: '#333' }}>{recipe.title}</h1>
-            <div style={{ display: 'flex', gap: '10px' }}>
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 p-6 border-b border-gray-200">
+            <h1 className="text-3xl font-bold text-gray-900">{recipe.title}</h1>
+            <div className="flex flex-wrap gap-3">
               <button
                 onClick={handleToggleFavorite}
-                style={{
-                  background: 'transparent',
-                  border: `2px solid ${isRecipeFavorited ? '#ff6b6b' : '#ddd'}`,
-                  padding: '8px 12px',
-                  borderRadius: '4px',
-                  cursor: 'pointer',
-                  fontSize: '18px',
-                  transition: 'all 0.2s ease',
-                  backgroundColor: isRecipeFavorited ? '#ff6b6b' : 'transparent'
-                }}
+                className={`px-4 py-2 rounded-md border-2 transition-all duration-200 text-lg ${
+                  isRecipeFavorited 
+                    ? 'border-red-400 bg-red-400 hover:bg-red-500 hover:border-red-500' 
+                    : 'border-gray-300 bg-transparent hover:border-red-400 hover:bg-red-50'
+                }`}
                 title={isRecipeFavorited ? 'Remove from favorites' : 'Add to favorites'}
               >
                 {isRecipeFavorited ? '❤️' : '🤍'}
               </button>
               <button 
                 onClick={() => setIsEditing(true)}
-                style={{
-                  padding: '8px 16px',
-                  backgroundColor: '#28a745',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '4px',
-                  cursor: 'pointer'
-                }}
+                className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors duration-200"
               >
                 Edit Recipe
               </button>
@@ -107,25 +83,17 @@ const RecipeDetails = () => {
             </div>
           </div>
           
-          <div style={{
-            backgroundColor: '#f8f9fa',
-            padding: '20px',
-            borderRadius: '8px',
-            border: '1px solid #dee2e6'
-          }}>
-            <h3 style={{ marginTop: '0', color: '#495057' }}>Description</h3>
-            <p style={{ 
-              lineHeight: '1.6', 
-              color: '#6c757d',
-              fontSize: '16px',
-              margin: '0'
-            }}>
-              {recipe.description}
-            </p>
-          </div>
-          
-          <div style={{ marginTop: '20px', fontSize: '14px', color: '#6c757d' }}>
-            <p><strong>Recipe ID:</strong> {recipe.id}</p>
+          <div className="p-6">
+            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+              <h3 className="text-xl font-semibold text-gray-700 mb-4">Description</h3>
+              <p className="text-gray-600 leading-relaxed text-base">
+                {recipe.description}
+              </p>
+            </div>
+            
+            <div className="mt-6 text-sm text-gray-500">
+              <p><strong className="text-gray-700">Recipe ID:</strong> {recipe.id}</p>
+            </div>
           </div>
         </div>
       )}

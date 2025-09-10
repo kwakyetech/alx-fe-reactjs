@@ -28,14 +28,14 @@ const RecommendationsList = () => {
 
   if (recommendations.length === 0) {
     return (
-      <div className="recommendations-container">
-        <h2 className="recommendations-title">Recommended for You</h2>
-        <div className="no-recommendations">
-          <p>No recommendations available yet.</p>
-          <p>Add some recipes to your favorites to get personalized recommendations!</p>
+      <div className="max-w-6xl mx-auto p-6">
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Recommended for You</h2>
+        <div className="text-center py-16 px-6 bg-gray-50 rounded-xl">
+          <p className="text-lg text-gray-600 mb-3">No recommendations available yet.</p>
+          <p className="text-lg text-gray-600 mb-6">Add some recipes to your favorites to get personalized recommendations!</p>
           <button 
             onClick={generateRecommendations}
-            className="generate-btn"
+            className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200 font-medium"
           >
             Generate Recommendations
           </button>
@@ -45,35 +45,41 @@ const RecommendationsList = () => {
   }
 
   return (
-    <div className="recommendations-container">
-      <div className="recommendations-header">
-        <h2 className="recommendations-title">Recommended for You</h2>
+    <div className="max-w-6xl mx-auto p-6">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
+        <h2 className="text-3xl font-bold text-gray-900">Recommended for You</h2>
         <button 
           onClick={generateRecommendations}
-          className="refresh-btn"
+          className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors duration-200 text-sm font-medium"
           title="Refresh recommendations"
         >
           🔄 Refresh
         </button>
       </div>
       
-      <div className="recommendations-grid">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {recommendations.map(recipe => (
-          <div key={recipe.id} className="recommendation-card">
-            <div className="recommendation-badge">Recommended</div>
-            <div className="recommendation-card-content">
-              <h3 className="recommendation-recipe-title">{recipe.title}</h3>
-              <p className="recommendation-recipe-description">{recipe.description}</p>
-              <div className="recommendation-card-actions">
+          <div key={recipe.id} className="relative bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-1 overflow-hidden">
+            <div className="absolute top-3 right-3 bg-red-400 text-white px-2 py-1 rounded-full text-xs font-medium z-10">
+              Recommended
+            </div>
+            <div className="p-6">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 pr-20">{recipe.title}</h3>
+              <p className="text-gray-600 leading-relaxed mb-6">{recipe.description}</p>
+              <div className="flex gap-3 items-center">
                 <Link 
                   to={`/recipe/${recipe.id}`} 
-                  className="view-recipe-btn"
+                  className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-md text-center text-sm font-medium hover:bg-blue-700 transition-colors duration-200 no-underline"
                 >
                   View Recipe
                 </Link>
                 <button 
                   onClick={() => handleToggleFavorite(recipe.id)}
-                  className={`favorite-btn ${isRecipeFavorited(recipe.id) ? 'favorited' : ''}`}
+                  className={`px-3 py-2 rounded-md border-2 text-lg transition-all duration-200 ${
+                    isRecipeFavorited(recipe.id) 
+                      ? 'border-red-400 bg-red-400 text-white' 
+                      : 'border-gray-300 bg-transparent hover:border-red-400 hover:bg-red-50'
+                  }`}
                   title={isRecipeFavorited(recipe.id) ? 'Remove from favorites' : 'Add to favorites'}
                 >
                   {isRecipeFavorited(recipe.id) ? '❤️' : '🤍'}
@@ -84,163 +90,7 @@ const RecommendationsList = () => {
         ))}
       </div>
 
-      <style jsx>{`
-        .recommendations-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 20px;
-        }
 
-        .recommendations-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 30px;
-        }
-
-        .recommendations-title {
-          font-size: 2rem;
-          color: #333;
-          margin: 0;
-        }
-
-        .refresh-btn {
-          background: #28a745;
-          color: white;
-          border: none;
-          padding: 10px 16px;
-          border-radius: 6px;
-          cursor: pointer;
-          font-size: 0.9rem;
-          transition: background-color 0.2s ease;
-        }
-
-        .refresh-btn:hover {
-          background: #218838;
-        }
-
-        .no-recommendations {
-          text-align: center;
-          padding: 60px 20px;
-          background: #f8f9fa;
-          border-radius: 12px;
-          color: #666;
-        }
-
-        .no-recommendations p {
-          margin: 10px 0;
-          font-size: 1.1rem;
-        }
-
-        .generate-btn {
-          background: #007bff;
-          color: white;
-          border: none;
-          padding: 12px 24px;
-          border-radius: 6px;
-          cursor: pointer;
-          font-size: 1rem;
-          margin-top: 20px;
-          transition: background-color 0.2s ease;
-        }
-
-        .generate-btn:hover {
-          background: #0056b3;
-        }
-
-        .recommendations-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          gap: 20px;
-        }
-
-        .recommendation-card {
-          background: white;
-          border-radius: 12px;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          overflow: hidden;
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-          position: relative;
-        }
-
-        .recommendation-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .recommendation-badge {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          background: #ff6b6b;
-          color: white;
-          padding: 4px 8px;
-          border-radius: 12px;
-          font-size: 0.8rem;
-          font-weight: 500;
-          z-index: 1;
-        }
-
-        .recommendation-card-content {
-          padding: 20px;
-        }
-
-        .recommendation-recipe-title {
-          font-size: 1.3rem;
-          color: #333;
-          margin-bottom: 10px;
-          font-weight: 600;
-          padding-right: 80px; /* Space for badge */
-        }
-
-        .recommendation-recipe-description {
-          color: #666;
-          line-height: 1.5;
-          margin-bottom: 20px;
-        }
-
-        .recommendation-card-actions {
-          display: flex;
-          gap: 10px;
-          align-items: center;
-        }
-
-        .view-recipe-btn {
-          background: #007bff;
-          color: white;
-          padding: 8px 16px;
-          border-radius: 6px;
-          text-decoration: none;
-          font-size: 0.9rem;
-          transition: background-color 0.2s ease;
-          flex: 1;
-          text-align: center;
-        }
-
-        .view-recipe-btn:hover {
-          background: #0056b3;
-        }
-
-        .favorite-btn {
-          background: transparent;
-          border: 2px solid #ddd;
-          padding: 8px 12px;
-          border-radius: 6px;
-          cursor: pointer;
-          font-size: 1.2rem;
-          transition: all 0.2s ease;
-        }
-
-        .favorite-btn:hover {
-          border-color: #ff6b6b;
-          background: #fff5f5;
-        }
-
-        .favorite-btn.favorited {
-          border-color: #ff6b6b;
-          background: #ff6b6b;
-        }
-      `}</style>
     </div>
   );
 };

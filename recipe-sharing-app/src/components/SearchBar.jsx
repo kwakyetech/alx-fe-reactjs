@@ -10,47 +10,16 @@ const SearchBar = () => {
   };
 
   return (
-    <div style={{
-      marginBottom: '20px',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center'
-    }}>
-      <div style={{
-        position: 'relative',
-        width: '100%',
-        maxWidth: '400px'
-      }}>
+    <div className="mb-8 flex justify-center items-center">
+      <div className="relative w-full max-w-md">
         <input
           type="text"
           placeholder="Search recipes..."
           value={searchTerm}
           onChange={handleSearchChange}
-          style={{
-            width: '100%',
-            padding: '12px 16px',
-            fontSize: '16px',
-            border: '2px solid #e1e5e9',
-            borderRadius: '25px',
-            outline: 'none',
-            transition: 'border-color 0.3s ease',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-          }}
-          onFocus={(e) => {
-            e.target.style.borderColor = '#007bff';
-          }}
-          onBlur={(e) => {
-            e.target.style.borderColor = '#e1e5e9';
-          }}
+          className="w-full px-4 py-3 pr-12 text-base border-2 border-gray-300 rounded-full outline-none transition-colors duration-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
         />
-        <div style={{
-          position: 'absolute',
-          right: '16px',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          color: '#6c757d',
-          pointerEvents: 'none'
-        }}>
+        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none text-lg">
           🔍
         </div>
       </div>

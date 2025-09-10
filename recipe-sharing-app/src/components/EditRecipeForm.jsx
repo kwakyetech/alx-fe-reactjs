@@ -40,22 +40,12 @@ const EditRecipeForm = ({ recipe, onCancel, onSave }) => {
   };
 
   return (
-    <div style={{
-      backgroundColor: '#f8f9fa',
-      padding: '20px',
-      borderRadius: '8px',
-      border: '1px solid #dee2e6'
-    }}>
-      <h2 style={{ marginTop: '0', color: '#333' }}>Edit Recipe</h2>
+    <div className="bg-gray-50 p-6 rounded-lg border border-gray-300">
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">Edit Recipe</h2>
       
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '15px' }}>
-          <label htmlFor="title" style={{
-            display: 'block',
-            marginBottom: '5px',
-            fontWeight: 'bold',
-            color: '#495057'
-          }}>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div>
+          <label htmlFor="title" className="block text-sm font-semibold text-gray-700 mb-2">
             Recipe Title:
           </label>
           <input
@@ -63,30 +53,22 @@ const EditRecipeForm = ({ recipe, onCancel, onSave }) => {
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '10px',
-              border: errors.title ? '2px solid #dc3545' : '1px solid #ced4da',
-              borderRadius: '4px',
-              fontSize: '16px',
-              boxSizing: 'border-box'
-            }}
+            className={`w-full px-4 py-3 rounded-md text-base transition-colors duration-200 ${
+              errors.title 
+                ? 'border-2 border-red-500 focus:ring-2 focus:ring-red-500 focus:border-red-500' 
+                : 'border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+            }`}
             placeholder="Enter recipe title"
           />
           {errors.title && (
-            <span style={{ color: '#dc3545', fontSize: '14px', marginTop: '5px', display: 'block' }}>
+            <span className="text-red-500 text-sm mt-2 block">
               {errors.title}
             </span>
           )}
         </div>
 
-        <div style={{ marginBottom: '20px' }}>
-          <label htmlFor="description" style={{
-            display: 'block',
-            marginBottom: '5px',
-            fontWeight: 'bold',
-            color: '#495057'
-          }}>
+        <div>
+          <label htmlFor="description" className="block text-sm font-semibold text-gray-700 mb-2">
             Description:
           </label>
           <textarea
@@ -94,36 +76,24 @@ const EditRecipeForm = ({ recipe, onCancel, onSave }) => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows="4"
-            style={{
-              width: '100%',
-              padding: '10px',
-              border: errors.description ? '2px solid #dc3545' : '1px solid #ced4da',
-              borderRadius: '4px',
-              fontSize: '16px',
-              resize: 'vertical',
-              boxSizing: 'border-box'
-            }}
+            className={`w-full px-4 py-3 rounded-md text-base resize-vertical transition-colors duration-200 ${
+              errors.description 
+                ? 'border-2 border-red-500 focus:ring-2 focus:ring-red-500 focus:border-red-500' 
+                : 'border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500'
+            }`}
             placeholder="Enter recipe description"
           />
           {errors.description && (
-            <span style={{ color: '#dc3545', fontSize: '14px', marginTop: '5px', display: 'block' }}>
+            <span className="text-red-500 text-sm mt-2 block">
               {errors.description}
             </span>
           )}
         </div>
 
-        <div style={{ display: 'flex', gap: '10px' }}>
+        <div className="flex flex-col sm:flex-row gap-3">
           <button
             type="submit"
-            style={{
-              padding: '10px 20px',
-              backgroundColor: '#28a745',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              fontSize: '16px'
-            }}
+            className="px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors duration-200 text-base font-medium"
           >
             Save Changes
           </button>
@@ -131,15 +101,7 @@ const EditRecipeForm = ({ recipe, onCancel, onSave }) => {
           <button
             type="button"
             onClick={onCancel}
-            style={{
-              padding: '10px 20px',
-              backgroundColor: '#6c757d',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              fontSize: '16px'
-            }}
+            className="px-6 py-3 bg-gray-600 text-white rounded-md hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors duration-200 text-base font-medium"
           >
             Cancel
           </button>
