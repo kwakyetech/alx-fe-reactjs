@@ -2,6 +2,12 @@
 
 A modern, responsive React application for searching GitHub users with advanced filtering capabilities and pagination. Built with React, Vite, Tailwind CSS, and the GitHub API.
 
+## 🌐 Live Demo
+
+**[View Live Application](https://hubuserfinder.vercel.app/)**
+
+The application is deployed on Vercel and fully functional with all features available.
+
 ## 🚀 Features
 
 ### Search Modes
