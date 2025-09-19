@@ -84,15 +84,8 @@ export const searchUsers = async (searchParams) => {
     const page = searchParams.page || 1;
     const perPage = Math.min(searchParams.perPage || 30, 100); // GitHub API max is 100
     
-    const response = await axios.get(`${BASE_URL}/search/users`, {
-      headers,
-      params: {
-        q: query,
-        per_page: perPage,
-        page: page,
-        sort: 'repositories', // Sort by repository count
-        order: 'desc'
-      }
+    const response = await axios.get(`https://api.github.com/search/users?q=${encodeURIComponent(query)}&per_page=${perPage}&page=${page}&sort=repositories&order=desc`, {
+      headers
     });
 
     return response.data;
