@@ -34,7 +34,8 @@ export const fetchUserData = async (username) => {
         throw new Error(`HTTP error! status: ${error.response.status}`);
       }
     }
-    console.error('Error fetching user data:', error);
+    // Remove console.error in production
+    // console.error('Error fetching user data:', error);
     throw error;
   }
 };
@@ -99,7 +100,8 @@ export const searchUsers = async (searchParams) => {
         throw new Error(`HTTP error! status: ${error.response.status}`);
       }
     }
-    console.error('Error searching users:', error);
+    // Remove console.error in production
+    // console.error('Error searching users:', error);
     throw error;
   }
 };
