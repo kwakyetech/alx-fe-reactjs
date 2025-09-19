@@ -40,11 +40,16 @@ export const fetchUserData = async (username) => {
 };
 
 /**
- * Search for GitHub users by username
- * @param {string} query - Search query
+ * Search for GitHub users with advanced criteria and pagination
+ * @param {Object} searchParams - Search parameters object
+ * @param {string} searchParams.username - Username to search for
+ * @param {string} searchParams.location - Location to filter by
+ * @param {string} searchParams.minRepos - Minimum number of repositories
+ * @param {number} searchParams.page - Page number for pagination (default: 1)
+ * @param {number} searchParams.perPage - Results per page (default: 30, max: 100)
  * @returns {Promise<Object>} Search results from GitHub API
  */
-export const searchUsers = async (query) => {
+export const searchUsers = async (searchParams) => {
   try {
     const apiKey = import.meta.env.VITE_APP_GITHUB_API_KEY;
     const headers = {
@@ -55,21 +60,52 @@ export const searchUsers = async (query) => {
       headers['Authorization'] = `token ${apiKey}`;
     }
 
-    const response = await fetch(`${BASE_URL}/search/users?q=${encodeURIComponent(query)}`, {
-      headers,
-    });
-
-    if (!response.ok) {
-      if (response.status === 403) {
-        throw new Error('API rate limit exceeded');
-      } else {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+    // Build search query based on parameters
+    let queryParts = [];
+    
+    if (searchParams.username) {
+      queryParts.push(searchParams.username);
+    }
+    
+    if (searchParams.location) {
+      queryParts.push(`location:${searchParams.location}`);
+    }
+    
+    if (searchParams.minRepos) {
+      queryParts.push(`repos:>=${searchParams.minRepos}`);
     }
 
-    const searchResults = await response.json();
-    return searchResults;
+    // If no search criteria provided, return empty results
+    if (queryParts.length === 0) {
+      return { items: [], total_count: 0 };
+    }
+
+    const query = queryParts.join(' ');
+    const page = searchParams.page || 1;
+    const perPage = Math.min(searchParams.perPage || 30, 100); // GitHub API max is 100
+    
+    const response = await axios.get(`${BASE_URL}/search/users`, {
+      headers,
+      params: {
+        q: query,
+        per_page: perPage,
+        page: page,
+        sort: 'repositories', // Sort by repository count
+        order: 'desc'
+      }
+    });
+
+    return response.data;
   } catch (error) {
+    if (error.response) {
+      if (error.response.status === 403) {
+        throw new Error('API rate limit exceeded');
+      } else if (error.response.status === 422) {
+        throw new Error('Invalid search query');
+      } else {
+        throw new Error(`HTTP error! status: ${error.response.status}`);
+      }
+    }
     console.error('Error searching users:', error);
     throw error;
   }
