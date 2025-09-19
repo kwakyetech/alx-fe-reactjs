@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const BASE_URL = 'https://api.github.com';
 
 /**
@@ -17,23 +19,21 @@ export const fetchUserData = async (username) => {
       headers['Authorization'] = `token ${apiKey}`;
     }
 
-    const response = await fetch(`${BASE_URL}/users/${username}`, {
+    const response = await axios.get(`${BASE_URL}/users/${username}`, {
       headers,
     });
 
-    if (!response.ok) {
-      if (response.status === 404) {
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      if (error.response.status === 404) {
         throw new Error('User not found');
-      } else if (response.status === 403) {
+      } else if (error.response.status === 403) {
         throw new Error('API rate limit exceeded');
       } else {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${error.response.status}`);
       }
     }
-
-    const userData = await response.json();
-    return userData;
-  } catch (error) {
     console.error('Error fetching user data:', error);
     throw error;
   }
