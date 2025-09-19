@@ -2,7 +2,7 @@ import Search from './components/Search'
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col font-sans">
+    <div className="min-h-screen flex flex-col font-sans overflow-x-hidden">
       <header className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white p-4 sm:p-6 md:p-8 text-center">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">GitHub User Search</h1>
         <p className="text-sm sm:text-base md:text-lg opacity-90">Search for GitHub users and view their profiles</p>

@@ -4,13 +4,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 /* Reset some default styles for better consistency */
 * {
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -21,4 +25,46 @@ body {
 
 #root {
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Ensure all containers respect viewport width */
+.container, .max-w-4xl, .max-w-2xl {
+  max-width: 100vw;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Fix for mobile input fields */
+input, textarea, select {
+  max-width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Prevent text from breaking layout */
+* {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  /* Ensure buttons don't overflow */
+  button {
+    max-width: 100%;
+    word-break: break-word;
+  }
+  
+  /* Fix for grid layouts on mobile */
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
 }
