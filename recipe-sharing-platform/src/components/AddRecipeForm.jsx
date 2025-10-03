@@ -17,7 +17,8 @@ const AddRecipeForm = () => {
 
   // Handle input changes
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const name = e.target.name;
+    const value = e.target.value;
     setFormData(prev => ({
       ...prev,
       [name]: value
@@ -197,14 +198,14 @@ const AddRecipeForm = () => {
               <button
                 type="button"
                 onClick={() => navigate('/')}
-                className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
+                className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium shadow-md hover:shadow-lg"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`flex-1 px-6 py-3 rounded-lg font-medium transition-colors ${
+                className={`flex-1 px-6 py-3 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg ${
                   isSubmitting
                     ? 'bg-gray-400 cursor-not-allowed'
                     : 'bg-blue-600 hover:bg-blue-700'

@@ -116,7 +116,7 @@ const RecipeDetail = () => {
       <div className="mt-8 text-center">
         <Link 
           to="/" 
-          className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition-colors duration-200 font-medium"
+          className="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium shadow-md hover:shadow-lg"
         >
           Explore More Recipes
         </Link>
