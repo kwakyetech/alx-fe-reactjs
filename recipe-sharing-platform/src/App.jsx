@@ -1,11 +1,10 @@
-function App() {
+import HomePage from './components/HomePage';
 
+function App() {
   return (
-    <>
-      <h1 class="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </>
+    <div className="min-h-screen bg-gray-50">
+      <HomePage />
+    </div>
   )
 }
 

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "image": "src/assets/Spaghetti Carbonara.png"
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
+    "image": "src/assets/Chicken Tikka Masala.png"
+  },
+  {
+    "id": 3,
+    "title": "Beef Tacos",
+    "summary": "Delicious Mexican-style tacos with seasoned ground beef, fresh vegetables, and zesty sauce.",
+    "image": "src/assets/Beef Tacos.png"
+  },
+  {
+    "id": 4,
+    "title": "Caesar Salad",
+    "summary": "Fresh romaine lettuce with parmesan cheese, croutons, and classic Caesar dressing.",
+    "image": "src/assets/Caesar Salad.png"
+  },
+  {
+    "id": 5,
+    "title": "Chocolate Chip Cookies",
+    "summary": "Soft and chewy homemade cookies loaded with chocolate chips.",
+    "image": "src/assets/Chocolate Chip Cookies.png"
+  },
+  {
+    "id": 6,
+    "title": "Grilled Salmon",
+    "summary": "Perfectly grilled salmon fillet with herbs and lemon, served with seasonal vegetables.",
+    "image": "src/assets/Grilled Salmon.png"
+  }
+]
