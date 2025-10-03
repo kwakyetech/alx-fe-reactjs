@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Button } from '../ui';
 import recipeData from '../data.json';
 
 const RecipeDetail = () => {
@@ -26,11 +27,10 @@ const RecipeDetail = () => {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
         <div className="text-xl text-red-600 mb-4">Recipe not found</div>
-        <Link 
-          to="/" 
-          className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200"
-        >
-          Back to Home
+        <Link to="/">
+          <Button variant="primary" size="medium">
+            Back to Home
+          </Button>
         </Link>
       </div>
     );
@@ -39,14 +39,13 @@ const RecipeDetail = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       {/* Back to Home Button */}
-      <Link 
-        to="/" 
-        className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors duration-200"
-      >
-        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
-        Back to Recipes
+      <Link to="/">
+        <Button variant="link" size="medium">
+          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Recipes
+        </Button>
       </Link>
 
       {/* Recipe Header */}
@@ -114,11 +113,10 @@ const RecipeDetail = () => {
 
       {/* Bottom Navigation */}
       <div className="mt-8 text-center">
-        <Link 
-          to="/" 
-          className="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium shadow-md hover:shadow-lg"
-        >
-          Explore More Recipes
+        <Link to="/">
+          <Button variant="primary" size="large">
+            Explore More Recipes
+          </Button>
         </Link>
       </div>
     </div>

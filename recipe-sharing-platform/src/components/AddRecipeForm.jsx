@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '../ui';
 
 const AddRecipeForm = () => {
   const navigate = useNavigate();
@@ -195,36 +196,37 @@ const AddRecipeForm = () => {
 
             {/* Form Actions */}
             <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <button
+              <Button
                 type="button"
+                variant="secondary"
+                size="medium"
                 onClick={() => navigate('/')}
-                className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium shadow-md hover:shadow-lg"
+                className="flex-1"
               >
                 Cancel
-              </button>
-              <button
+              </Button>
+              <Button
                 type="submit"
+                variant="primary"
+                size="medium"
                 disabled={isSubmitting}
-                className={`flex-1 px-6 py-3 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg ${
-                  isSubmitting
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-blue-600 hover:bg-blue-700'
-                } text-white`}
+                className="flex-1"
               >
                 {isSubmitting ? 'Adding Recipe...' : 'Add Recipe'}
-              </button>
+              </Button>
             </div>
           </form>
         </div>
 
         {/* Back to Home Link */}
         <div className="max-w-2xl mx-auto mt-6 text-center">
-          <button
+          <Button
+            variant="link"
+            size="medium"
             onClick={() => navigate('/')}
-            className="text-blue-600 hover:text-blue-800 transition-colors"
           >
             ← Back to Home
-          </button>
+          </Button>
         </div>
       </div>
     </div>

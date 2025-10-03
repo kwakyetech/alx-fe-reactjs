@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "src/assets/Spaghetti Carbonara.png",
+    "image": "/src/assets/Spaghetti Carbonara.png",
     "ingredients": [
       "400g spaghetti pasta",
       "200g pancetta or bacon, diced",
@@ -31,7 +31,7 @@
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "src/assets/Chicken Tikka Masala.png",
+    "image": "/src/assets/Chicken Tikka Masala.png",
     "ingredients": [
       "1 lb boneless chicken, cut into chunks",
       "1 cup plain yogurt",
@@ -62,7 +62,7 @@
     "id": 3,
     "title": "Beef Tacos",
     "summary": "Delicious Mexican-style tacos with seasoned ground beef, fresh vegetables, and zesty sauce.",
-    "image": "src/assets/Beef Tacos.png",
+    "image": "/src/assets/Beef Tacos.png",
     "ingredients": [
       "1 lb ground beef",
       "1 packet taco seasoning",
@@ -91,7 +91,7 @@
     "id": 4,
     "title": "Caesar Salad",
     "summary": "Fresh romaine lettuce with parmesan cheese, croutons, and classic Caesar dressing.",
-    "image": "src/assets/Caesar Salad.png",
+    "image": "/src/assets/Caesar Salad.png",
     "ingredients": [
       "2 large heads romaine lettuce, chopped",
       "1/2 cup grated Parmesan cheese",
@@ -119,7 +119,7 @@
     "id": 5,
     "title": "Chocolate Chip Cookies",
     "summary": "Soft and chewy homemade cookies loaded with chocolate chips.",
-    "image": "src/assets/Chocolate Chip Cookies.png",
+    "image": "/src/assets/Chocolate Chip Cookies.png",
     "ingredients": [
       "2 1/4 cups all-purpose flour",
       "1 teaspoon baking soda",
@@ -147,7 +147,7 @@
     "id": 6,
     "title": "Grilled Salmon",
     "summary": "Perfectly grilled salmon fillet with herbs and lemon, served with seasonal vegetables.",
-    "image": "src/assets/Grilled Salmon.png",
+    "image": "/src/assets/Grilled Salmon.png",
     "ingredients": [
       "4 salmon fillets (6 oz each)",
       "2 tablespoons olive oil",
