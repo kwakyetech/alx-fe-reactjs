@@ -3,36 +3,171 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "src/assets/Spaghetti Carbonara.png"
+    "image": "src/assets/Spaghetti Carbonara.png",
+    "ingredients": [
+      "400g spaghetti pasta",
+      "200g pancetta or bacon, diced",
+      "4 large eggs",
+      "100g Pecorino Romano cheese, grated",
+      "50g Parmesan cheese, grated",
+      "2 cloves garlic, minced",
+      "Freshly ground black pepper",
+      "Salt to taste",
+      "2 tablespoons olive oil"
+    ],
+    "instructions": [
+      "Bring a large pot of salted water to boil and cook spaghetti according to package directions.",
+      "While pasta cooks, heat olive oil in a large skillet over medium heat.",
+      "Add pancetta and cook until crispy, about 5-7 minutes.",
+      "Add minced garlic and cook for another minute.",
+      "In a bowl, whisk together eggs, both cheeses, and black pepper.",
+      "Drain pasta, reserving 1 cup of pasta water.",
+      "Add hot pasta to the skillet with pancetta.",
+      "Remove from heat and quickly stir in egg mixture, adding pasta water as needed.",
+      "Toss until creamy and serve immediately with extra cheese and pepper."
+    ]
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "src/assets/Chicken Tikka Masala.png"
+    "image": "src/assets/Chicken Tikka Masala.png",
+    "ingredients": [
+      "1 lb boneless chicken, cut into chunks",
+      "1 cup plain yogurt",
+      "2 tablespoons lemon juice",
+      "2 teaspoons garam masala",
+      "1 teaspoon cumin",
+      "1 teaspoon coriander",
+      "1 onion, finely chopped",
+      "3 cloves garlic, minced",
+      "1 inch ginger, grated",
+      "1 can (14 oz) crushed tomatoes",
+      "1 cup heavy cream",
+      "2 tablespoons butter",
+      "Salt and pepper to taste"
+    ],
+    "instructions": [
+      "Marinate chicken in yogurt, lemon juice, and half the spices for 30 minutes.",
+      "Grill or pan-fry chicken until cooked through. Set aside.",
+      "In a large pan, melt butter and sauté onions until golden.",
+      "Add garlic, ginger, and remaining spices. Cook for 1 minute.",
+      "Add crushed tomatoes and simmer for 10 minutes.",
+      "Stir in cream and cooked chicken.",
+      "Simmer for 5 minutes until sauce thickens.",
+      "Season with salt and pepper. Serve with rice or naan."
+    ]
   },
   {
     "id": 3,
     "title": "Beef Tacos",
     "summary": "Delicious Mexican-style tacos with seasoned ground beef, fresh vegetables, and zesty sauce.",
-    "image": "src/assets/Beef Tacos.png"
+    "image": "src/assets/Beef Tacos.png",
+    "ingredients": [
+      "1 lb ground beef",
+      "1 packet taco seasoning",
+      "8 taco shells or tortillas",
+      "1 cup shredded lettuce",
+      "1 cup diced tomatoes",
+      "1 cup shredded cheddar cheese",
+      "1/2 cup diced onions",
+      "1/2 cup sour cream",
+      "1/4 cup chopped cilantro",
+      "2 limes, cut into wedges",
+      "Hot sauce (optional)"
+    ],
+    "instructions": [
+      "Brown ground beef in a large skillet over medium-high heat.",
+      "Drain excess fat and add taco seasoning with 2/3 cup water.",
+      "Simmer for 5 minutes until sauce thickens.",
+      "Warm taco shells according to package directions.",
+      "Fill each shell with seasoned beef.",
+      "Top with lettuce, tomatoes, cheese, and onions.",
+      "Serve with sour cream, cilantro, lime wedges, and hot sauce.",
+      "Enjoy immediately while shells are warm."
+    ]
   },
   {
     "id": 4,
     "title": "Caesar Salad",
     "summary": "Fresh romaine lettuce with parmesan cheese, croutons, and classic Caesar dressing.",
-    "image": "src/assets/Caesar Salad.png"
+    "image": "src/assets/Caesar Salad.png",
+    "ingredients": [
+      "2 large heads romaine lettuce, chopped",
+      "1/2 cup grated Parmesan cheese",
+      "1 cup croutons",
+      "2 cloves garlic, minced",
+      "2 anchovy fillets (optional)",
+      "1/4 cup lemon juice",
+      "1 teaspoon Dijon mustard",
+      "1/2 cup olive oil",
+      "1 egg yolk",
+      "Salt and pepper to taste"
+    ],
+    "instructions": [
+      "Wash and chop romaine lettuce, then chill in refrigerator.",
+      "For dressing, mash garlic and anchovies into a paste.",
+      "Whisk in lemon juice, Dijon mustard, and egg yolk.",
+      "Slowly drizzle in olive oil while whisking continuously.",
+      "Season dressing with salt and pepper.",
+      "Toss chilled lettuce with dressing until well coated.",
+      "Top with Parmesan cheese and croutons.",
+      "Serve immediately for best texture."
+    ]
   },
   {
     "id": 5,
     "title": "Chocolate Chip Cookies",
     "summary": "Soft and chewy homemade cookies loaded with chocolate chips.",
-    "image": "src/assets/Chocolate Chip Cookies.png"
+    "image": "src/assets/Chocolate Chip Cookies.png",
+    "ingredients": [
+      "2 1/4 cups all-purpose flour",
+      "1 teaspoon baking soda",
+      "1 teaspoon salt",
+      "1 cup butter, softened",
+      "3/4 cup granulated sugar",
+      "3/4 cup brown sugar, packed",
+      "2 large eggs",
+      "2 teaspoons vanilla extract",
+      "2 cups chocolate chips"
+    ],
+    "instructions": [
+      "Preheat oven to 375°F (190°C).",
+      "Mix flour, baking soda, and salt in a bowl.",
+      "In another bowl, cream butter and both sugars until fluffy.",
+      "Beat in eggs and vanilla extract.",
+      "Gradually mix in flour mixture until just combined.",
+      "Stir in chocolate chips.",
+      "Drop rounded tablespoons of dough onto ungreased baking sheets.",
+      "Bake for 9-11 minutes until golden brown.",
+      "Cool on baking sheet for 2 minutes, then transfer to wire rack."
+    ]
   },
   {
     "id": 6,
     "title": "Grilled Salmon",
     "summary": "Perfectly grilled salmon fillet with herbs and lemon, served with seasonal vegetables.",
-    "image": "src/assets/Grilled Salmon.png"
+    "image": "src/assets/Grilled Salmon.png",
+    "ingredients": [
+      "4 salmon fillets (6 oz each)",
+      "2 tablespoons olive oil",
+      "2 lemons, sliced",
+      "3 cloves garlic, minced",
+      "2 tablespoons fresh dill, chopped",
+      "1 tablespoon fresh parsley, chopped",
+      "1 teaspoon paprika",
+      "Salt and pepper to taste",
+      "Seasonal vegetables for serving"
+    ],
+    "instructions": [
+      "Preheat grill to medium-high heat.",
+      "Pat salmon fillets dry and brush with olive oil.",
+      "Season with salt, pepper, paprika, and minced garlic.",
+      "Grill salmon for 4-5 minutes per side, depending on thickness.",
+      "During last 2 minutes, add lemon slices to grill.",
+      "Remove salmon when it flakes easily with a fork.",
+      "Sprinkle with fresh dill and parsley.",
+      "Serve immediately with grilled lemon slices and seasonal vegetables."
+    ]
   }
 ]
