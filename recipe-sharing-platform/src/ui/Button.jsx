@@ -22,9 +22,9 @@ const Button = ({
   
   // Size styles
   const sizes = {
-    small: 'px-3 py-1.5 text-sm rounded-md',
-    medium: 'px-6 py-3 text-base rounded-lg',
-    large: 'px-8 py-4 text-lg rounded-lg'
+    small: 'px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-md',
+    medium: 'px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base rounded-lg',
+    large: 'px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-lg'
   };
   
   // Disabled styles

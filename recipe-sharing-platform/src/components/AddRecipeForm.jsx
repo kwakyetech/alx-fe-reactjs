@@ -119,17 +119,17 @@ const AddRecipeForm = () => {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="max-w-2xl mx-auto mb-8">
-          <h1 className="text-4xl font-bold text-center text-gray-800 mb-4">
+        <div className="max-w-4xl mx-auto mb-8">
+          <h1 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-4">
             Add New Recipe
           </h1>
-          <p className="text-gray-600 text-center">
+          <p className="text-gray-600 text-center text-sm sm:text-base">
             Share your favorite recipe with the community
           </p>
         </div>
 
         {/* Form */}
-        <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6 md:p-8">
+        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-4 sm:p-6 md:p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Recipe Title */}
             <div>
@@ -142,7 +142,7 @@ const AddRecipeForm = () => {
                 name="title"
                 value={formData.title}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
+                className={`w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-sm sm:text-base ${
                   errors.title ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder="Enter recipe title..."
@@ -163,7 +163,7 @@ const AddRecipeForm = () => {
                 value={formData.ingredients}
                 onChange={handleChange}
                 rows="6"
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-vertical ${
+                className={`w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-vertical text-sm sm:text-base ${
                   errors.ingredients ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder="2 cups flour&#10;1 cup sugar&#10;3 eggs&#10;1 tsp vanilla extract"
@@ -184,7 +184,7 @@ const AddRecipeForm = () => {
                 value={formData.steps}
                 onChange={handleChange}
                 rows="8"
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-vertical ${
+                className={`w-full px-3 sm:px-4 py-2 sm:py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-vertical text-sm sm:text-base ${
                   errors.steps ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder="1. Preheat oven to 350°F&#10;2. Mix dry ingredients in a bowl&#10;3. Add wet ingredients and stir until combined&#10;4. Bake for 25-30 minutes"
@@ -195,13 +195,13 @@ const AddRecipeForm = () => {
             </div>
 
             {/* Form Actions */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-6">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-6">
               <Button
                 type="button"
                 variant="secondary"
                 size="medium"
                 onClick={() => navigate('/')}
-                className="flex-1"
+                className="flex-1 w-full sm:w-auto"
               >
                 Cancel
               </Button>
@@ -210,7 +210,7 @@ const AddRecipeForm = () => {
                 variant="primary"
                 size="medium"
                 disabled={isSubmitting}
-                className="flex-1"
+                className="flex-1 w-full sm:w-auto"
               >
                 {isSubmitting ? 'Adding Recipe...' : 'Add Recipe'}
               </Button>
@@ -219,7 +219,7 @@ const AddRecipeForm = () => {
         </div>
 
         {/* Back to Home Link */}
-        <div className="max-w-2xl mx-auto mt-6 text-center">
+        <div className="max-w-4xl mx-auto mt-6 text-center">
           <Button
             variant="link"
             size="medium"
