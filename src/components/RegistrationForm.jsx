@@ -81,7 +81,7 @@ const RegistrationForm = () => {
 
   return (
     <div style={{ maxWidth: '400px', margin: '0 auto', padding: '20px' }}>
-      <h2>User Registration</h2>
+      <h2>User Registration (Controlled Components)</h2>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: '15px' }}>
           <label htmlFor="username" style={{ display: 'block', marginBottom: '5px' }}>
