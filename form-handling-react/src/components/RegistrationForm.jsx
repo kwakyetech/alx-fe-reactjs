@@ -1,12 +1,10 @@
 import { useState } from 'react';
 
 const RegistrationForm = () => {
-  // State management for form fields
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
-  });
+  // State management for individual form fields
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   // State for validation errors
   const [errors, setErrors] = useState({});
@@ -17,10 +15,15 @@ const RegistrationForm = () => {
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    
+    // Update the appropriate state based on field name
+    if (name === 'username') {
+      setUsername(value);
+    } else if (name === 'email') {
+      setEmail(value);
+    } else if (name === 'password') {
+      setPassword(value);
+    }
 
     // Clear error for this field when user starts typing
     if (errors[name]) {
@@ -36,21 +39,21 @@ const RegistrationForm = () => {
     const newErrors = {};
 
     // Check if username is empty
-    if (!formData.username.trim()) {
+    if (!username.trim()) {
       newErrors.username = 'Username is required';
     }
 
     // Check if email is empty
-    if (!formData.email.trim()) {
+    if (!email.trim()) {
       newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
       newErrors.email = 'Email format is invalid';
     }
 
     // Check if password is empty
-    if (!formData.password.trim()) {
+    if (!password.trim()) {
       newErrors.password = 'Password is required';
-    } else if (formData.password.length < 6) {
+    } else if (password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters long';
     }
 
@@ -76,6 +79,7 @@ const RegistrationForm = () => {
 
     try {
       // Simulate API call
+      const formData = { username, email, password };
       console.log('Form submitted with data:', formData);
       
       // Here you would typically make an API call to register the user
@@ -85,11 +89,9 @@ const RegistrationForm = () => {
       alert('Registration successful!');
       
       // Reset form after successful submission
-      setFormData({
-        username: '',
-        email: '',
-        password: ''
-      });
+      setUsername('');
+      setEmail('');
+      setPassword('');
     } catch (error) {
       console.error('Registration failed:', error);
       alert('Registration failed. Please try again.');
@@ -114,7 +116,7 @@ const RegistrationForm = () => {
             type="text"
             id="username"
             name="username"
-            value={formData.username}
+            value={username}
             onChange={handleChange}
             className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               errors.username ? 'border-red-500' : 'border-gray-300'
@@ -135,7 +137,7 @@ const RegistrationForm = () => {
             type="email"
             id="email"
             name="email"
-            value={formData.email}
+            value={email}
             onChange={handleChange}
             className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               errors.email ? 'border-red-500' : 'border-gray-300'
@@ -156,7 +158,7 @@ const RegistrationForm = () => {
             type="password"
             id="password"
             name="password"
-            value={formData.password}
+            value={password}
             onChange={handleChange}
             className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               errors.password ? 'border-red-500' : 'border-gray-300'
