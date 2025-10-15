@@ -2,8 +2,16 @@ import { useState, createContext, useContext } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { BrowserRouter, Link, Route, Routes, Outlet, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { BrowserRouter, Link, Route, Routes, Navigate } from 'react-router-dom'
 import Profile, { ProfileDetails, ProfileSettings } from './components/Profile.jsx'
+import ProtectedRoute from './components/ProtectedRoute.jsx'
+import { AuthProvider } from './providers/AuthProvider.js'
+import Home from './pages/Home.jsx'
+import About from './pages/About.jsx'
+import PostsList from './pages/PostsList.jsx'
+import Post from './pages/Post.jsx'
+import LoginPage from './pages/LoginPage.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 function Home() {
   return (
@@ -156,9 +164,6 @@ function NotFound() {
 }
 
 function App() {
-  const [count, setCount] = useState(0)
-  const auth = useAuth()
-
   return (
     <>
       <nav style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
@@ -166,23 +171,13 @@ function App() {
         <Link to="/about">About</Link>
         <Link to="/posts">Posts</Link>
         <Link to="/profile">Profile</Link>
-        <span style={{ marginLeft: 'auto' }}>
-          Auth: {auth?.isAuthenticated ? 'Logged in' : 'Logged out'}
-          {auth?.isAuthenticated ? (
-            <button style={{ marginLeft: 8 }} onClick={auth.logout}>Logout</button>
-          ) : null}
-        </span>
       </nav>
       <hr />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-
-        {/* Dynamic routing examples */}
         <Route path="/posts" element={<PostsList />} />
         <Route path="/posts/:postId" element={<Post />} />
-
-        {/* Nested + protected routes for Profile */}
         <Route
           path="/profile"
           element={
@@ -195,14 +190,9 @@ function App() {
           <Route path="details" element={<ProfileDetails />} />
           <Route path="settings" element={<ProfileSettings />} />
         </Route>
-
-        {/* Auth route */}
         <Route path="/login" element={<LoginPage />} />
-
-        {/* 404 fallback */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -212,14 +202,6 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
@@ -227,7 +209,6 @@ function App() {
   )
 }
 
-// Wrap App with AuthProvider and BrowserRouter so auth and router are available
 export default function AppWithProviders() {
   return (
     <AuthProvider>
