@@ -2,7 +2,7 @@ import { useState, createContext, useContext } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { Link, Route, Routes, Outlet, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { BrowserRouter, Link, Route, Routes, Outlet, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
 
 function Home() {
   return (
@@ -226,11 +226,13 @@ function App() {
   )
 }
 
-// Wrap App with AuthProvider so auth is available
+// Wrap App with AuthProvider and BrowserRouter so auth and router are available
 export default function AppWithProviders() {
   return (
     <AuthProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </AuthProvider>
   )
 }
