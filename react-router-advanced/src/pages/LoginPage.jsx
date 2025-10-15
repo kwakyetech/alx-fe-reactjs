@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom'
-import { useAuth } from '../providers/AuthProvider.js'
+import { useAuth } from '../providers/AuthProvider.jsx'
 
 export default function LoginPage() {
   const auth = useAuth()
