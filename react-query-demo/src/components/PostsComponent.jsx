@@ -2,6 +2,7 @@ import React from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
 const POSTS_URL = 'https://jsonplaceholder.typicode.com/posts'
+const staleTimeMs = 60 * 1000 // keep in sync with useQuery staleTime
 
 async function fetchPosts() {
   const res = await fetch(POSTS_URL)
@@ -19,6 +20,17 @@ async function createPost(newPost) {
   return res.json()
 }
 
+function formatRelativeTime(timestamp) {
+  if (!timestamp) return 'never'
+  const diffMs = Date.now() - timestamp
+  const sec = Math.floor(diffMs / 1000)
+  if (sec < 60) return `${sec}s ago`
+  const min = Math.floor(sec / 60)
+  if (min < 60) return `${min}m ago`
+  const hr = Math.floor(min / 60)
+  return `${hr}h ago`
+}
+
 export default function PostsComponent() {
   const queryClient = useQueryClient()
 
@@ -32,11 +44,16 @@ export default function PostsComponent() {
   } = useQuery({
     queryKey: ['posts'],
     queryFn: fetchPosts,
-    staleTime: 60 * 1000, // 1 minute fresh
+    staleTime: staleTimeMs, // 1 minute fresh
     gcTime: 5 * 60 * 1000, // 5 minutes cache garbage collection
     refetchOnWindowFocus: 'always',
     select: (data) => data.slice(0, 10), // show first 10 posts for brevity
   })
+
+  const queryState = queryClient.getQueryState(['posts'])
+  const dataUpdatedAt = queryState?.dataUpdatedAt ?? 0
+  const updatedAgoMs = dataUpdatedAt ? Date.now() - dataUpdatedAt : null
+  const isFreshFromCache = updatedAgoMs != null && updatedAgoMs < staleTimeMs
 
   const addPostMutation = useMutation({
     mutationFn: createPost,
@@ -85,6 +102,11 @@ export default function PostsComponent() {
         <h2 className="text-xl font-semibold">Posts</h2>
         {isFetching && (
           <span className="text-xs text-gray-500">background updating…</span>
+        )}
+        {!isLoading && !isError && posts && (
+          <span className="text-xs text-gray-500">
+            {isFreshFromCache ? 'cached (fresh)' : 'cached (stale)'} • updated {formatRelativeTime(dataUpdatedAt)}
+          </span>
         )}
       </div>
 
