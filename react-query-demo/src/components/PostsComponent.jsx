@@ -45,7 +45,11 @@ export default function PostsComponent() {
     queryKey: ['posts'],
     queryFn: fetchPosts,
     staleTime: staleTimeMs, // 1 minute fresh
-    gcTime: 5 * 60 * 1000, // 5 minutes cache garbage collection
+    gcTime: 5 * 60 * 1000, // 5 minutes cache garbage collection (v5 replacement for cacheTime)
+    // Added for compatibility/demonstration: v3/v4 used cacheTime; v5 now uses gcTime
+    cacheTime: 5 * 60 * 1000,
+    // keepPreviousData helps when queryKey parameters change (e.g., pagination)
+    keepPreviousData: true,
     refetchOnWindowFocus: 'always',
     select: (data) => data.slice(0, 10), // show first 10 posts for brevity
   })
