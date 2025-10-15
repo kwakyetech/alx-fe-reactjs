@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Routes, Route, Navigate } from 'react-router-dom'
 
 export default function Profile() {
   return (
@@ -9,7 +9,11 @@ export default function Profile() {
         <Link to="settings">Settings</Link>
       </nav>
       <hr />
-      <Outlet />
+      <Routes>
+        <Route index element={<Navigate to="details" replace />} />
+        <Route path="details" element={<ProfileDetails />} />
+        <Route path="settings" element={<ProfileSettings />} />
+      </Routes>
     </div>
   )
 }
