@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { BrowserRouter, Link, Route, Routes, Outlet, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom'
+import Profile, { ProfileDetails, ProfileSettings } from './components/Profile.jsx'
 
 function Home() {
   return (
@@ -186,7 +187,7 @@ function App() {
           path="/profile"
           element={
             <ProtectedRoute>
-              <ProfileLayout />
+              <Profile />
             </ProtectedRoute>
           }
         >
