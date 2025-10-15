@@ -10,6 +10,7 @@ import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import PostsList from './pages/PostsList.jsx'
 import Post from './pages/Post.jsx'
+import BlogPost from './pages/BlogPost.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import NotFound from './pages/NotFound.jsx'
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/posts" element={<PostsList />} />
         <Route path="/posts/:postId" element={<Post />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
         <Route
           path="/profile/*"
           element={
